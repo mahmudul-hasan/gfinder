@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Gas Finder</string>
+
+    <!--Base Activity stuff-->
+    <string name="app_subtitle_home">Home</string>
+
+    <!--Gaslist Activity stuff-->
+    <string name="app_subtitle_gaslist">Nearby Gas Stations</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
