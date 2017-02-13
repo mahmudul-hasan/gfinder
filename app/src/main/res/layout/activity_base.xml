@@ -43,13 +43,25 @@
 
     </android.support.v7.widget.CardView>
 
-    <Button
-        android:id="@+id/btn_base_current_loc_refresh"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_base_current_loc_refresh"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Refresh"
-        android:layout_below="@id/cv_current_location"
-        android:layout_centerHorizontal="true"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/cv_current_location">
+
+        <Button
+            android:id="@+id/btn_base_current_loc_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh" />
+
+        <Button
+            android:id="@+id/btn_not_yout_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not your correct location?" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_base_proceed"
@@ -62,7 +74,7 @@
         android:id="@+id/ll_gaslist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_base_current_loc_refresh"
+        android:layout_below="@id/ll_base_current_loc_refresh"
         android:layout_above="@id/btn_base_proceed"
         android:orientation="vertical">
 
