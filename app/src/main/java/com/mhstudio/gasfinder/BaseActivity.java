@@ -63,6 +63,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     private Button mBtnProceed;
     private ProgressBar mPbCurrentLoc;
     private ListView mGasListView;
+    private Button mNotYourLocation;
 
     private GaslistAdapter leAdapter;
 
@@ -96,12 +97,20 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         mBtnCurrLocRefresh = (Button) findViewById(R.id.btn_base_current_loc_refresh);
         mBtnProceed = (Button) findViewById(R.id.btn_base_proceed);
         mPbCurrentLoc = (ProgressBar) findViewById(R.id.pb_surrent_location);
+        mNotYourLocation = (Button) findViewById(R.id.btn_not_yout_location);
 
         mBtnCurrLocRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 guessCurrentPlace();
 //                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            }
+        });
+
+        mNotYourLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayPlacePicker();
             }
         });
 
@@ -393,18 +402,31 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
         if( place == null )
             return;
 
+        lat = place.getLatLng().latitude;
+        lng = place.getLatLng().longitude;
+
+        mGasModel.setLattitude(lat);
+        mGasModel.setLongitude(lng);
+
         String content = "";
         if( !TextUtils.isEmpty( place.getName() ) ) {
-            content += "Name: " + place.getName() + "\n";
+            content += place.getName() + "\n";
         }
         if( !TextUtils.isEmpty( place.getAddress() ) ) {
-            content += "Address: " + place.getAddress() + "\n";
+            content += place.getAddress();
         }
-        if( !TextUtils.isEmpty( place.getPhoneNumber() ) ) {
-            content += "Phone: " + place.getPhoneNumber();
-        }
+//        if( !TextUtils.isEmpty( place.getPhoneNumber() ) ) {
+//            content += "Phone: " + place.getPhoneNumber();
+//        }
+
+        mTVCurrentPlace.setText(content);
 
         Log.e("CONTENT", content);
+
+        //first empty the existing data
+        mGasModel.resetEntryList();
+
+        findNearby();
     }
     //ONLY TO CHECK, MAY NOT NEED THIS METHOD ends
 }
