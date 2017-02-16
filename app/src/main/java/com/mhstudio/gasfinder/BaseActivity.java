@@ -169,7 +169,7 @@ public class BaseActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnected(@Nullable Bundle bundle) {
         Log.e("CONNLOG", "Connected");
         guessCurrentPlace();
-        Toast.makeText(this, "onConnected", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "onConnected", Toast.LENGTH_LONG).show();
     }
     //ConnectionCallbacks methods ends
 
